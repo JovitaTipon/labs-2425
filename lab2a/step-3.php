@@ -10,7 +10,7 @@ $address = $_POST['address'];
 $_SESSION['program'] = $program;
 $_SESSION['address'] = $address;
 
-dump_session();
+
 ?>
 <html>
 <head>

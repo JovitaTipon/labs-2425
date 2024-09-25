@@ -21,7 +21,6 @@ $_SESSION['age'] = $age;
 $_SESSION['contact_number'] = $contact_number;
 $_SESSION['sex'] = $sex;
 
-dump_session();
 
 ?>
 <html>
