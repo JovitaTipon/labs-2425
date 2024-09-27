@@ -4,7 +4,7 @@ $uploaded_audio_file = $upload_directory . basename($_FILES['audio_file']['name'
 $temporary_file = $_FILES['audio_file']['tmp_name'];
 
 if (!is_dir($upload_directory)) {
-    mkdir($upload_directory, 0777, true); // Create directory with permissions
+    mkdir($upload_directory, 0777, true);
 }
 
 if ($_FILES['audio_file']['type'] == 'audio/mpeg' && pathinfo($_FILES['audio_file']['name'], PATHINFO_EXTENSION) == 'mp3') {
