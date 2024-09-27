@@ -5,7 +5,7 @@ $temporary_file = $_FILES['video_file']['tmp_name'];
 
 
 if (!is_dir($upload_directory)) {
-    mkdir($upload_directory, 0777, true); // Create directory with proper permissions
+    mkdir($upload_directory, 0777, true);
 }
 
 $allowed_video_types = ['video/mp4'];
