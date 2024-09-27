@@ -22,6 +22,7 @@
     <h4>File Upload</h4>
     
     <form method="POST" action="uploaded.php" enctype="multipart/form-data">
+<<<<<<< HEAD
     <div class="p-card">
         <h3>MP3 File</h3>
         <p class="p-card__content">
@@ -37,6 +38,22 @@
     </div>
 </form>
 
+=======
+        <div class="p-card">
+            <h3>PDF File</h3>
+            <p class="p-card__content">
+                <!-- Use $_FILES['pdf_file'] to handle file upload -->
+                <input type="file" name="pdf_file" accept=".pdf" />
+            </p>
+        </div>
+
+        <div>
+            <button type="submit">
+                Upload
+            </button>
+        </div>
+    </form>
+>>>>>>> pdf-file-upload
 
   </div>
   
@@ -46,4 +63,8 @@
 </div>
 
 </body>
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> pdf-file-upload
