@@ -29,6 +29,13 @@
         <h3>Image File</h3>
         <p class="p-card__content">
             <input type="file" name="image_file" accept="image/*" />
+        <h3>MP4 Video File</h3>
+        <p class="p-card__content">
+            <input type="file" name="video_file" accept="video/mp4" />
+        </p>
+        <h3>PDF File</h3>
+        <p class="p-card__content">
+            <input type="file" name="pdf_file" accept=".pdf" />
         </p>
     </div>
 
@@ -36,21 +43,6 @@
         <button type="submit">Upload</button>
     </div>
 </form>
-
-        <div class="p-card">
-            <h3>PDF File</h3>
-            <p class="p-card__content">
-                <!-- Use $_FILES['pdf_file'] to handle file upload -->
-                <input type="file" name="pdf_file" accept=".pdf" />
-            </p>
-        </div>
-
-        <div>
-            <button type="submit">
-                Upload
-            </button>
-        </div>
-    </form>
 
   </div>
   
