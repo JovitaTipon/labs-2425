@@ -22,7 +22,6 @@
     <h4>File Upload</h4>
     
     <form method="POST" action="uploaded.php" enctype="multipart/form-data">
-<<<<<<< HEAD
     <div class="p-card">
         <h3>MP3 File</h3>
         <p class="p-card__content">
@@ -38,7 +37,6 @@
     </div>
 </form>
 
-=======
         <div class="p-card">
             <h3>PDF File</h3>
             <p class="p-card__content">
@@ -53,7 +51,6 @@
             </button>
         </div>
     </form>
->>>>>>> pdf-file-upload
 
   </div>
   
@@ -63,8 +60,4 @@
 </div>
 
 </body>
-<<<<<<< HEAD
 </html>
-=======
-</html>
->>>>>>> pdf-file-upload
