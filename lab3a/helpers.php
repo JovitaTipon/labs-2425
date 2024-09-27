@@ -1,6 +1,6 @@
 <?php
 
-define('MAX_QUESTION_NUMBER', 50);
+define('MAX_QUESTION_NUMBER', 5);
 
 function retrieve_questions() {
     // 1. Open the questions/triviaquiz.json file
@@ -19,7 +19,7 @@ function get_current_question($answers = '') {
     return $questions['questions'][$number_of_answers];
 }
 
-function get_current_question_number($answers = '') {
+function get_current_question_number($answers = '') {  
     return strlen($answers) + 1;
 }
 
@@ -39,6 +39,8 @@ function compute_score($answers = []) {
         }
     }
     return $score;
+
+    
 }
 
 function get_answers() {

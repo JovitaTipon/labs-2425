@@ -11,15 +11,15 @@ $complete_name = $_POST['complete_name'];
 $email = $_POST['email'];
 $birthdate = $_POST['birthdate'];
 $contact_number = $_POST['contact_number'];
-$agree = $_POST['agree'];
-$answer = $_POST['answer'] ?? null;
-$answers = $_POST['answers'] ?? null;
+$agree = $_POST['terms_agreed'];
+$answer = $_POST['answer'] ?? '';
+$answers = $_POST['answers'] ?? '';
 if (!is_null($answer)) {
     $answers .= $answer;
 }
 
 // Use the compute_score() function from helpers.php
-// $score = compute_score($answers);
+$score = compute_score($answers);
 ?>
 <html>
 <head>

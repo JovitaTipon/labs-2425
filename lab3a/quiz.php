@@ -5,26 +5,40 @@ require "helpers.php";
 # from the $_SERVER global variable, check if the HTTP method used is POST, if its not POST, redirect to the index.php page
 # Reference: https://www.php.net/manual/en/reserved.variables.server.php
 
+session_start();
+
 // Supply the missing code
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('Location: index.php');
+    exit();
 }
 
 // Supply the missing code
-$complete_name = $_POST['complete_name'];
-$email = $_POST['email'];
-$birthdate = $_POST['birthdate'];
-$contact_number = $_POST['contact_number'];
-$agree = $_POST['agree'];
-$answer = $_POST['answer'] ?? null;
-$answers = $_POST['answers'] ?? null;
+
+$complete_name = $_SESSION['complete_name'];
+$email = $_SESSION['email'];
+$birthdate = $_SESSION['birthdate'];
+$contact_number = $_SESSION['contact_number'];
+
+$agree = $_POST['terms_agreed'];
+$answer = $_POST['answer'] ?? '';
+$answers = $_POST['answers'] ?? '';
+
+$_SESSION['terms_agreed'] = $_POST['terms_agreed'];
+
+
+
 if (!is_null($answer)) {
     $answers .= $answer;
 }
 
+
 $questions = retrieve_questions();
 $current_question = get_current_question($answers);
 $current_question_number = get_current_question_number($answers);
+
+/*"Answers so far: " . htmlspecialchars($answers) . "<br>";
+echo "Current question number: " . $current_question_number . "<br>";*/
 
 $target = 'quiz.php';
 if ($current_question_number == MAX_QUESTION_NUMBER) {
@@ -46,6 +60,10 @@ $options = get_options_for_question_number($current_question_number);
         <?php echo $current_question['question']; ?>
     </h2>
 
+    
+
+
+
     <!-- Supply the correct HTTP method and target form handler resource -->
 
     <form method="POST" action="<?php echo $target; ?>">
@@ -53,24 +71,25 @@ $options = get_options_for_question_number($current_question_number);
         <input type="hidden" name="email" value="<?php echo $email; ?>" />
         <input type="hidden" name="birthdate" value="<?php echo $birthdate; ?>" />
         <input type="hidden" name="contact_number" value="<?php echo $contact_number; ?>" />
-        <input type="hidden" name="agree" value="<?php echo $agree; ?>" />
-        <!--
-        <input type="hidden" name="answers" />
-        -->
+        <input type="hidden" name="terms_agreed" value="<?php echo $agree; ?>" />
+        <input type="hidden" name="answers" value="<?php echo $answers; ?>" />
+        
 
         <!-- Display the options -->
-        <?php foreach ($answers as $answer): ?>
+        <?php foreach ($options as $option): ?>
         <div class="field">
             <div class="control">
                 <label class="radio">
                     <input type="radio"
                         name="answer"
-                        value="<?php echo $option['key']; ?>" />
-                        <?php echo $option['value']; ?>
+                        value="<?php echo htmlspecialchars($option['key']); ?>" />
+                        <?php echo htmlspecialchars($option['value']); ?>
                 </label>
             </div>
         </div>
         <?php endforeach; ?>
+
+        
 
         <!-- Start Quiz button -->
         <button type="submit" class="button">Submit</button>
