@@ -1,22 +1,27 @@
 <?php
-
 $upload_directory = getcwd() . '/uploads/';
-$relative_path = '/uploads/';
+$uploaded_video_file = $upload_directory . basename($_FILES['video_file']['name']);
+$temporary_file = $_FILES['video_file']['tmp_name'];
 
-// Handle Text File
-$uploaded_text_file = $upload_directory . basename($_FILES['text_file']['name']);
-$temporary_file = $_FILES['text_file']['tmp_name'];
 
-if (move_uploaded_file($temporary_file, $uploaded_text_file)) {
-    $text_file_content = file_get_contents($uploaded_text_file, 'r');
-    ?>
-    <textarea cols="70" rows="30"><?php echo $text_file_content; ?></textarea>
-    <?php
-} else {
-    echo 'Failed to upload file';
+if (!is_dir($upload_directory)) {
+    mkdir($upload_directory, 0777, true); // Create directory with proper permissions
 }
 
+$allowed_video_types = ['video/mp4'];
 
-echo '<pre>';
-var_dump($_FILES);
+if (in_array($_FILES['video_file']['type'], $allowed_video_types)) {
+    if (move_uploaded_file($temporary_file, $uploaded_video_file)) {
+        echo "MP4 video uploaded successfully!";
+        echo "<video width='320' height='240' controls>
+                <source src='/uploads/" . basename($_FILES['video_file']['name']) . "' type='video/mp4'>
+                Your browser does not support the video tag.
+              </video>";
+    } else {
+        echo "Failed to upload MP4 video.";
+    }
+} else {
+    echo "Please upload a valid MP4 video file.";
+}
+
 exit;
