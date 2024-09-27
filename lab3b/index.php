@@ -20,24 +20,25 @@
 <div class="row--50-50 grid-demo">
   <div class="col">
     <h4>File Upload</h4>
-
-    <form>
-        <div class="p-card">
-            <h3>Text File</h3>
-            <p class="p-card__content">
-            <input type="file" name="text_file" accept=".txt" />
-            </p>
-        </div>
-
-        <div>
-            <button>
-                Upload
-            </button>
-        </div>
-    </form>
+    
+    <form method="POST" action="uploaded.php" enctype="multipart/form-data">
+    <div class="p-card">
+        <h3>Image File</h3>
+        <p class="p-card__content">
+            <input type="file" name="image_file" accept="image/*" />
+        </p>
     </div>
+
+    <div>
+        <button type="submit">Upload</button>
+    </div>
+</form>
+
+
+  </div>
+  
   <div class="col">
-  <img class="p-logo-section__logo" src="https://www.auf.edu.ph/home/images/mascot/CCS.png" alt="College of Computing Studies">
+    <img class="p-logo-section__logo" src="https://www.auf.edu.ph/home/images/mascot/CCS.png" alt="College of Computing Studies">
   </div>
 </div>
 
